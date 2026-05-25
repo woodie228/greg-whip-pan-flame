@@ -1,0 +1,52 @@
+<ShaderNodePreset SupportsAdaptiveDegradation="False" SupportsAction="False" SupportsTransition="True" SupportsTimeline="False" TimelineUseBack="True" MatteProvider="False" CommercialUsePermitted="True" ShaderType="Matchbox" SoftwareVersion="2017.0.0" LimitInputsToTexture="True" Version="2" Description="Two-input whip pan and zoom transition with directional slide or radial zoom motion blur." Name="Greg Whip Pan">
+   <Shader Clear="0" GridSubdivision="1" OutputBitDepth="Output" Index="1">
+      <Uniform ResDependent="None" Max="1.0" Min="0.0" Default="0.0" Inc="0.01" Tooltip="Animate from 0 to 1 to move from Clip A to Clip B." Row="0" Col="0" Page="0" Type="float" ChannelName="Progress" DisplayName="Progress" Name="progress">
+      </Uniform>
+      <Uniform Max="4" Min="0" Default="0" Inc="1" Tooltip="Motion direction for the transition. Choose Zoom for a radial blur zoom instead of a slide whip." Row="1" Col="0" Page="0" Type="int" ChannelName="Direction" DisplayName="Direction" Name="direction" ValueType="Popup">
+         <PopupEntry Title="Left To Right" Value="0">
+         </PopupEntry>
+         <PopupEntry Title="Right To Left" Value="1">
+         </PopupEntry>
+         <PopupEntry Title="Bottom To Top" Value="2">
+         </PopupEntry>
+         <PopupEntry Title="Top To Bottom" Value="3">
+         </PopupEntry>
+         <PopupEntry Title="Zoom" Value="4">
+         </PopupEntry>
+      </Uniform>
+      <Uniform ResDependent="None" Max="3.0" Min="0.0" Default="1.15" Inc="0.01" Tooltip="How far each clip travels, measured as a fraction of frame width or height." Row="2" Col="0" Page="0" Type="float" ChannelName="Travel" DisplayName="Travel" Name="travel">
+      </Uniform>
+      <Uniform ResDependent="None" Max="2.0" Min="0.0" Default="0.65" Inc="0.01" Tooltip="Length of directional motion blur at the center of the transition." Row="3" Col="0" Page="0" Type="float" ChannelName="Motion Blur" DisplayName="Motion Blur" Name="motion_blur">
+      </Uniform>
+      <Uniform ResDependent="None" Max="33.0" Min="1.0" Default="17.0" Inc="2.0" Tooltip="Number of blur samples. Higher values are smoother but slower." Row="4" Col="0" Page="0" Type="float" ChannelName="Blur Samples" DisplayName="Blur Samples" Name="blur_samples">
+      </Uniform>
+      <Uniform ResDependent="None" Max="2.0" Min="0.0" Default="1.0" Inc="0.01" Tooltip="Radial motion blur strength when Direction is set to Zoom." Row="5" Col="0" Page="0" Type="float" ChannelName="Zoom Blur" DisplayName="Zoom Blur" Name="zoom_amount">
+      </Uniform>
+      <Uniform ResDependent="None" Max="3.0" Min="0.05" Default="1.35" Inc="0.01" Tooltip="Scale the outgoing clip reaches at the end of a Zoom transition. Values above 1.0 push into the outgoing shot." Row="6" Col="0" Page="0" Type="float" ChannelName="Outgoing End Scale" DisplayName="Outgoing End Scale" Name="outgoing_zoom_scale">
+      </Uniform>
+      <Uniform ResDependent="None" Max="3.0" Min="0.05" Default="0.75" Inc="0.01" Tooltip="Scale the incoming clip starts from in a Zoom transition. Values below 1.0 make the second input begin farther back in Z space." Row="7" Col="0" Page="0" Type="float" ChannelName="Incoming Start Scale" DisplayName="Incoming Start Scale" Name="incoming_zoom_scale">
+      </Uniform>
+      <Uniform ResDependent="None" Max="0.5" Min="0.001" Default="0.18" Inc="0.005" Tooltip="Duration of the blend between Clip A and Clip B around the midpoint." Row="0" Col="1" Page="0" Type="float" ChannelName="Blend Width" DisplayName="Blend Width" Name="blend_width">
+      </Uniform>
+      <Uniform ResDependent="None" Max="1.0" Min="0.0" Default="1.0" Inc="0.01" Tooltip="Blend between a plain dissolve/slide and the full whip-pan treatment." Row="1" Col="1" Page="0" Type="float" ChannelName="Mix" DisplayName="Mix" Name="mix_amount">
+      </Uniform>
+      <Uniform Row="2" Col="1" Page="0" Default="True" Tooltip="Mirror pixels beyond the frame edge. In Zoom mode, turn Fill Gaps off to mirror the scaled shot instead of filling with the full-frame shot." Type="bool" ChannelName="Mirror Edges" DisplayName="Mirror Edges" Name="mirror_edges">
+      </Uniform>
+      <Uniform Row="3" Col="1" Page="0" Default="True" Tooltip="Fill off-frame areas. In slide directions this uses the opposite clip; in Zoom mode this fills scaled edges with the same shot full-frame." Type="bool" ChannelName="Fill Gaps" DisplayName="Fill Gaps" Name="fill_gaps">
+      </Uniform>
+      <Uniform Row="4" Col="1" Page="0" Default="True" Tooltip="Ease Progress so the transition starts slowly, accelerates through the middle, and slows into the end." Type="bool" ChannelName="Easy Ease" DisplayName="Easy Ease" Name="easy_ease">
+      </Uniform>
+      <Uniform Row="5" Col="1" Page="0" Default="False" Tooltip="Bypass the plain mix contribution and show only the moving blurred result." Type="bool" ChannelName="Show Motion Only" DisplayName="Show Motion Only" Name="show_motion_only">
+      </Uniform>
+      <Uniform Index="0" NoInput="Black" Tooltip="Outgoing clip." DisplayName="Outgoing" InputType="Front" InputColor="67, 77, 83" Mipmaps="False" GL_TEXTURE_WRAP_T="GL_CLAMP_TO_EDGE" GL_TEXTURE_WRAP_S="GL_CLAMP_TO_EDGE" GL_TEXTURE_MAG_FILTER="GL_LINEAR" GL_TEXTURE_MIN_FILTER="GL_LINEAR" Type="sampler2D" Name="front1">
+      </Uniform>
+      <Uniform Index="1" NoInput="Black" Tooltip="Incoming clip." DisplayName="Incoming" InputType="Front" InputColor="83, 73, 67" Mipmaps="False" GL_TEXTURE_WRAP_T="GL_CLAMP_TO_EDGE" GL_TEXTURE_WRAP_S="GL_CLAMP_TO_EDGE" GL_TEXTURE_MAG_FILTER="GL_LINEAR" GL_TEXTURE_MIN_FILTER="GL_LINEAR" Type="sampler2D" Name="front2">
+      </Uniform>
+   </Shader>
+   <Page Name="Greg Whip Pan" Page="0">
+      <Col Name="Motion" Col="0" Page="0">
+      </Col>
+      <Col Name="Blend" Col="1" Page="0">
+      </Col>
+   </Page>
+</ShaderNodePreset>

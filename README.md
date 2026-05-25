@@ -40,6 +40,16 @@ Restart Flame or rescan Matchbox shaders if needed.
 In Batch, connect the outgoing clip to the first input and the incoming clip to
 the second input.
 
+## Flame Preview
+
+BFX schematic:
+
+![Greg Whip Pan BFX schematic](docs/greg_whip_pan_bfx_schematic.png)
+
+Matchbox controls:
+
+![Greg Whip Pan Matchbox controls](docs/greg_whip_pan_controls.png)
+
 ## Controls
 
 - `Direction`: left/right/up/down slide or zoom.
